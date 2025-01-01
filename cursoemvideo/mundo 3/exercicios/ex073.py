@@ -1,0 +1,6 @@
+times = ("Botafogo", "Palmeiras", "Flamengo", "Fortaleza", "Internacional", "São Paulo", "Corinthians", "Bahia", "Cruzeiro", "Vasco")
+print("Lista de times do Brasileirão",times)
+print("Os 5 primeiros são",times[:5])
+print("Os 4 últimos são",times[-4:])
+print("Times em ordem alfabética",sorted(times))
+print(f"O Fortaleza está na {times.index("Fortaleza")+1} posição")
