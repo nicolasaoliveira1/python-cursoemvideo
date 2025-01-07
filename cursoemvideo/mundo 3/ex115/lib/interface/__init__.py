@@ -9,6 +9,19 @@ def leiaInt(texto):
         else:
             return n
 
+def leiaNome(texto): #função nova para tratar os nomes
+    while True:
+        try:
+            n = input(texto).strip().title()
+            if not n.isalpha():
+                print("ERRO: O nome deve conter apenas letras. Tente novamente.")
+                continue
+        except KeyboardInterrupt:
+            print("\nERRO: Entrada interrompida pelo usuário.")
+            continue
+        else:
+            return n
+
 def linha(tam = 40):
     return "-" * tam
 

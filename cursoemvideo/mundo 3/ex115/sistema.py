@@ -10,15 +10,18 @@ if not arquivoExiste(arq):
 while True:
     resposta = menu(["Ver pessoas cadastradas","Cadastrar nova pessoa", "Remover uma pessoa", "Sair do sistema"])
     if resposta == 1:
-        # Opção de listar o conteúdo de um arquivo
+        # opção de listar o conteúdo de um arquivo
         lerArquivo(arq)
     elif resposta == 2:
         cabeçalho("NOVO CADASTRO")
-        nome = str(input("Nome: ")).title().strip()
+        nome = leiaNome("Nome: ") #função nova implementada
         idade = leiaInt("Idade: ")
         cadastrar(arq, nome, idade)
     elif resposta == 3:
         cabeçalho("REMOVER PESSOA")
+        lerArquivo(arq)
+        idx = leiaInt("Cód. da pessoa a ser removida: ")
+        remover(arq,idx) #função nova implementada
     elif resposta == 4:
         cabeçalho("Saindo do sistema.. Até logo!")
         break

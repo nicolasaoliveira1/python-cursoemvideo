@@ -25,10 +25,10 @@ def lerArquivo(nome):
         print("Erro ao ler o arquivo.")
     else:
         cabeçalho("PESSOAS CADASTRADAS")
-        for linha in a:
+        for i, linha in enumerate(a):
             dado = linha.split(";")
             dado[1] = dado[1].replace("\n", "")
-            print(f"{dado[0]:<30}{dado[1]:>3} anos")
+            print(f"{i} - {dado[0]:<30}{dado[1]:>3} anos")
     finally:
         a.close()
 
@@ -44,3 +44,29 @@ def cadastrar(arq, nome="Desconhecido", idade = 0):
             print("Houve um erro na hora de escrever os dados.")
         else:
             print(f"Novo registro de {nome} adicionado!")
+        finally:
+            a.close()
+
+def remover(arq, idx): #função nova para remover pessoas cadastradas
+    try:
+        a = open(arq, "rt")
+        nomes = []
+        dado = []
+    except:
+        print("Houve um ERRO ao ler o arquivo.")
+    else:
+        try:
+            for linha in a:
+                nomes.append(linha)
+                dado.append(linha.split(";"))
+            nome_removido = dado[idx][0]
+            del(nomes[idx])
+            a = open(arq, "wt")
+            for n in nomes:
+                a.write(n)
+        except IndexError:
+            print("Índice inválido, tente novamente.")
+        except:
+            print("Houve um erro")
+        else:
+            print(f"{nome_removido} foi removido(a) da lista.")
